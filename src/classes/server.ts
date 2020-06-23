@@ -34,10 +34,13 @@ export default class Server {
 
     private listenSockets() {
 
-        console.log("Listening sockets");
-
         this.socket.on('connection', client => {
-            console.log("Client connected!");
+
+            // Conectar client
+            socket.connectClient(client);
+
+            // Login
+            socket.login(client, this.socket);
         
             // Messages
             socket.message(client, this.socket);
